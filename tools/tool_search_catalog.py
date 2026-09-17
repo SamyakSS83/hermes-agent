@@ -123,19 +123,12 @@ def _bm25_score(query_tokens: List[str], doc_tokens: List[str], doc_lengths: Lis
     typically < 500 tools — so a dependency is not worth it)."""
     score = 0.0
     dl = len(doc_tokens)
-    # .count() per query token beats a full Counter when the query is short
-    # (the common case: ~2-6 tokens vs docs of tens of tokens) — no per-document
-    # dict allocation, and duplicates in query_tokens add O(1) extra passes.
-    dl_denom = k1 * (1 - b + b * dl / max(avg_dl, 1.0))
+    doc_tf = Counter(doc_tokens)
     for q in query_tokens:
-        df = doc_freq.get(q, 0)
-        if not df:
-            continue
-        tf = doc_tokens.count(q)
-        if not tf:
-            continue
-        idf = math.log(1 + (n_docs - df + 0.5) / (df + 0.5))
-        score += idf * tf * (k1 + 1) / (tf + dl_denom)
+        df, tf = doc_freq.get(q, 0), doc_tf.get(q, 0)
+        if df and tf:
+            idf = math.log(1 + (n_docs - df + 0.5) / (df + 0.5))
+            score += idf * tf * (k1 + 1) / (tf + k1 * (1 - b + b * dl / max(avg_dl, 1.0)))
     return score
 
 

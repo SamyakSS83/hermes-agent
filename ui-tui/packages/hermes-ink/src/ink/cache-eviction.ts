@@ -1,6 +1,7 @@
-// Unified cache eviction for the four hot Ink module-level caches:
+// Unified cache eviction for the hot Ink module-level caches:
 //   - widthCache       (stringWidth.ts)
 //   - wrapCache        (wrap-text.ts)
+//   - wrap widths      (wrap-width-cache.ts; internal to the Node fallback)
 //   - sliceCache       (sliceAnsi.ts)
 //   - lineWidthCache   (line-width-cache.ts)
 //
@@ -14,6 +15,7 @@ import { evictSliceCache, sliceCacheSize } from '../utils/sliceAnsi.js'
 import { evictLineWidthCache, lineWidthCacheSize } from './line-width-cache.js'
 import { evictWidthCache, widthCacheSize } from './stringWidth.js'
 import { evictWrapCache, wrapCacheSize } from './wrap-text.js'
+import { evictWrapWidthCache } from './wrap-width-cache.js'
 
 export interface InkCacheSizes {
   lineWidth: number
@@ -38,6 +40,7 @@ export function evictInkCaches(level: EvictLevel = 'half'): InkCacheSizes {
 
   evictWidthCache(keep)
   evictWrapCache(keep)
+  evictWrapWidthCache(keep)
   evictSliceCache(keep)
   evictLineWidthCache(keep)
 

@@ -1,0 +1,41 @@
+{
+  "node": "v26.9.0",
+  "summary": [
+    {
+      "kind": "cumulative-stream",
+      "variant": "current",
+      "n": 131,
+      "resizes": 0,
+      "medianMs": 85.31583000000009,
+      "medianCpuMs": 178.20600000000013,
+      "outputHash": "f710b06ea185aabc7e02b18a7138fb762660b1453ceb509731621bd344742aca"
+    },
+    {
+      "kind": "cumulative-stream",
+      "variant": "integrated",
+      "n": 131,
+      "resizes": 0,
+      "medianMs": 67.82829199999992,
+      "medianCpuMs": 147.324,
+      "outputHash": "f710b06ea185aabc7e02b18a7138fb762660b1453ceb509731621bd344742aca"
+    },
+    {
+      "kind": "cumulative-resize",
+      "variant": "current",
+      "n": 131,
+      "resizes": 11,
+      "medianMs": 99.25890700000019,
+      "medianCpuMs": 201.25199999999998,
+      "outputHash": "1a09441df911f8eb1b65f22af40b18ecba88f685edf186fb91beff6c89cf649d"
+    },
+    {
+      "kind": "cumulative-resize",
+      "variant": "integrated",
+      "n": 131,
+      "resizes": 11,
+      "medianMs": 75.31268700000018,
+      "medianCpuMs": 162.40800000000002,
+      "outputHash": "1a09441df911f8eb1b65f22af40b18ecba88f685edf186fb91beff6c89cf649d"
+    }
+  ]
+}
